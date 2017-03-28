@@ -41,7 +41,7 @@ function initEditor(){
 }
 
 function initFileTree(){
-	$('#file_tree').fileTree({ root: '/home', script: 'http://localhost:8080', expandSpeed: 1, collapseSpeed: 1 }, function(file) { 
+	$('#file_tree').fileTree({ root: projectPath, script: 'http://localhost:8080', expandSpeed: 1, collapseSpeed: 1 }, function(file) { 
 					loadFile(file);
 				});
 }
@@ -110,10 +110,6 @@ function loadFaultPath(){
 	}
 	$(".pathNode").click(addMarker);
 	
-	var temp_path = path[0].filePath;
-	if(temp_path[0] == '/'){
-		path[0].filePath = temp_path.slice(1);										//文件路径开头的‘/’去掉，为了保持一致性
-	}
 	loadFile(path[0].filePath);
 }
 
@@ -132,11 +128,6 @@ function addMarker(){
 	$(this).find("p").addClass("_active");
 	$(this).find("div.header").addClass("ui brown inverted _active");
 	$(this).addClass("_active");
-	
-	var temp_path = $(this).attr('filePath');										//文件路径开头的‘/’去掉，为了保持一致性
-	if(temp_path[0] == '/'){
-		$(this).attr('filePath', temp_path.slice(1));
-	}
 	
 	loadFile($(this).attr('filePath'));
 	var start = Number($(this).attr('startline'));
