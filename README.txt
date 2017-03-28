@@ -25,4 +25,8 @@ removeOldMarkers()		--去除所有之前的markers
 addMarker()				--去掉之前active元素的样式，触发点击事件的元素加上active样式，加载文件，加上annotation和marker, scroll到marker的行
 
 4.java部分
-主要功能就是将得到工程文件的信息和report xml的信息，再写到data.js中
+主要功能是得到report xml的信息，写到data.js中
+
+5.startInspect.py说明
+是python 2的脚本，执行这个脚本会产生一个简单的HTTPserver,能响应file, dir两个带参数的get请求，并返回文件内容或者目录信息。
+脚本会自动打开index.html，并在http://localhost:8080与之通信

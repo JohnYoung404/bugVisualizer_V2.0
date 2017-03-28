@@ -43,7 +43,6 @@ class TestHTTPHandler(BaseHTTPRequestHandler):
                 fileObj.close()
                 cgi.escape(allText)
                 r.append(allText)
-		print r
             except Exception as e:
                 r.append('Could not load file: %s' % str(e))
         try:
