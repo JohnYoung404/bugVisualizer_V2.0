@@ -41,7 +41,7 @@ function initEditor(){
 }
 
 function initFileTree(){
-	$('#file_tree').fileTree({ root: 'C://Users//John Young//Desktop//BugVisualizer', script: 'http://localhost:8080', expandSpeed: 1, collapseSpeed: 1 }, function(file) { 
+	$('#file_tree').fileTree({ root: '/home', script: 'http://localhost:8080', expandSpeed: 1, collapseSpeed: 1 }, function(file) { 
 					loadFile(file);
 				});
 }
@@ -87,9 +87,11 @@ function initPath(){
 }
 
 function loadFile(filepath){
-	_EDITOR.session.setValue(unescape(_SOURCE_CODE_SET[filepath]));
-	removeOldMarkers();
-	_EDITOR.session.clearAnnotations();
+    $.get('http://localhost:8080', { file: filepath }, function(ret) {
+						_EDITOR.session.setValue(unescape(ret));
+                        removeOldMarkers();
+                        _EDITOR.session.clearAnnotations();
+					});
 }
 
 function loadFaultPath(){
@@ -150,3 +152,4 @@ function addMarker(){
 	_EDITOR.scrollToLine(start - 1, true, true);
 	_MARKER_SET.push(markerProduced);
 }
+
