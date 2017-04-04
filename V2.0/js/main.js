@@ -24,24 +24,25 @@ function initControl(){
 function initEditor(){
 	_EDITOR = ace.edit("editor");
 	_EDITOR.renderer.setHScrollBarAlwaysVisible(false);
-    _EDITOR.setTheme("ace/theme/eclipse");
+	_EDITOR.setTheme("ace/theme/eclipse");
 	_EDITOR.session.setMode('ace/mode/java');
-    _EDITOR.renderer.setShowGutter(true);
-    _EDITOR.setShowPrintMargin(true);
-    _EDITOR.setDisplayIndentGuides(true);
-    _EDITOR.setHighlightSelectedWord(true);
-    _EDITOR.setPrintMarginColumn(80);
+	_EDITOR.renderer.setShowGutter(true);
+	_EDITOR.setShowPrintMargin(true);
+	_EDITOR.setDisplayIndentGuides(true);
+	_EDITOR.setHighlightSelectedWord(true);
+	_EDITOR.setPrintMarginColumn(80);
 	_EDITOR.setAnimatedScroll(true);
 	_EDITOR.setHighlightActiveLine(false);
 	
 	_EDITOR.setReadOnly(true);
 	_EDITOR.session.setValue(_INIT_CODE);
-    _EDITOR.session.setTabSize(4);
+	_EDITOR.session.setTabSize(4);
 	_EDITOR.session.setUseWrapMode(false);
 }
 
 function initFileTree(){
-	$('#file_tree').fileTree({ root: '/home', script: 'http://localhost:8080', expandSpeed: 1, collapseSpeed: 1 }, function(file) { 
+	console.log('initFileTree');
+	$('#file_tree').fileTree({ root: '/home/johnyoung/Desktop', script: 'http://localhost:8080', expandSpeed: 1, collapseSpeed: 1 }, function(file) { 
 					loadFile(file);
 				});
 }
@@ -87,8 +88,9 @@ function initPath(){
 }
 
 function loadFile(filepath){
+    console.log('loadFile');
     $.get('http://localhost:8080', { file: filepath }, function(ret) {
-						_EDITOR.session.setValue(unescape(ret));
+			_EDITOR.session.setValue(unescape(ret));
                         removeOldMarkers();
                         _EDITOR.session.clearAnnotations();
 					});

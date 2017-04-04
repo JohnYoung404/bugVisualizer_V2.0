@@ -2,7 +2,6 @@ from BaseHTTPServer import HTTPServer, BaseHTTPRequestHandler
 import os
 import urllib
 import urlparse
-import webbrowser
 import cgi
 import sys
 
@@ -13,12 +12,26 @@ sys.setdefaultencoding('utf8')
 
 class TestHTTPHandler(BaseHTTPRequestHandler):
     def do_GET(self):
+        r = []
         parseResult = urlparse.urlparse(self.path)
         param_dict = urlparse.parse_qs(parseResult.query)
+        f = parseResult.path
+        if f=='':
+            print "fatal error!"
+        if not f == '/':
+            fp  = open(os.curdir + f)          
+            self.protocal_version = "HTTP/1.1"
+            self.send_response(200)  
+            self.send_header("Welcome", "Contect")    
+            self.send_header("Access-Control-Allow-Origin", "*")            
+            self.end_headers()
+            self.wfile.write(fp.read())
+            fp.close()
+            return
         if 'dir' in param_dict:
             r=['<ul class="jqueryFileTree" style="display: none;">']
             try:
-                r=['<ul class="jqueryFileTree" style="display: none;">']
+                r = ['<ul class="jqueryFileTree" style="display: none;">']
                 d = ''.join(param_dict['dir'])
                 d = urlparse.unquote(d)
                 for f in os.listdir(d):
@@ -43,7 +56,6 @@ class TestHTTPHandler(BaseHTTPRequestHandler):
                 fileObj.close()
                 cgi.escape(allText)
                 r.append(allText)
-		print r
             except Exception as e:
                 r.append('Could not load file: %s' % str(e))
         try:
@@ -60,5 +72,4 @@ port = 8080
 
 httpd = HTTPServer(('', port),  TestHTTPHandler)
 print("Serve on port: " + str(httpd.server_port))
-webbrowser.open("index.html")
 httpd.serve_forever()
