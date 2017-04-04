@@ -20,9 +20,9 @@ import cn.edu.thu.tsmart.tool.bd.report.section.TransferRelation;
 import cn.edu.thu.tsmart.tool.bd.report.util.ResultUtil;
 
 public class Main {
-	public static String projectPath = "home/zhoumin/work/fighting2016/analyze";    
+	public static String projectPath = "/home/joungyoung/Desktop";    
 	public static String reportPath = "home/zhoumin/tsmart-development/cn.edu.thu.tsmart.tool.bd.engine/cpachecker/output/result.xml";
-	public static String escape(String src) {  
+	public static String escape(String src) {                    //encode转移字符
         int i;  
         char j;  
         StringBuffer tmp = new StringBuffer();  
@@ -47,11 +47,11 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 		final List<File> files = new ArrayList<>();
 		if(!projectPath.endsWith("/")){
-			projectPath = projectPath + "/";					//�ļ��еĽ�βĬ�ϼ���'/'
+			projectPath = projectPath + "/";					//若路径结尾没有'/'则加上
 		}
 
-		String htmlpart3 = new String();
-		String htmlpart4 = new String();
+		String errorlist = new String();             //缺陷路径的列表
+		String errorcontent = new String();             //每条缺陷路径的具体内容
 		try {
 			Report report = ResultUtil.readFromFile(reportPath);
 			final List<String> strs = new ArrayList();
@@ -105,26 +105,26 @@ public class Main {
 				strs3.add(sb_temp2.toString());
 				
 			}
-			htmlpart3 = Joiner.on(" , ").join(strs);
-			htmlpart4 = Joiner.on(" , ").join(strs3);
+			errorlist = Joiner.on(" , ").join(strs);
+			errorcontent = Joiner.on(" , ").join(strs3);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		StringBuilder sb3 = new StringBuilder();
-		sb3.append("[");
-		sb3.append(htmlpart3);
-		sb3.append("]");
+		StringBuilder sb_errorlist = new StringBuilder();
+		sb_errorlist.append("[");
+		sb_errorlist.append(errorlist);
+		sb_errorlist.append("]");
 		
-		StringBuilder sb4 = new StringBuilder();
-		sb4.append("{");
-		sb4.append(htmlpart4);
-		sb4.append("}");
+		StringBuilder sb_errorcontent = new StringBuilder();
+		sb_errorcontent.append("{");
+		sb_errorcontent.append(errorcontent);
+		sb_errorcontent.append("}");
 		
 		FileWriter writer = new FileWriter("data/template/data/data.js");
 		writer.write("var projectPath = \"" + projectPath + "\"");
-		writer.write(";\nvar _FAULTS_SET = " + sb3.toString());
-		writer.write(";\nvar faultID_Path_Dic = " + sb4.toString() + ";");
+		writer.write(";\nvar _FAULTS_SET = " + sb_errorlist.toString());
+		writer.write(";\nvar faultID_Path_Dic = " + sb_errorcontent.toString() + ";");
 		writer.close();
 		System.out.println("done");
 	}

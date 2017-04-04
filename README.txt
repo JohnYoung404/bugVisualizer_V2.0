@@ -1,7 +1,7 @@
 1.目录结构
 --bin
     java可执行文件
---data
+--webInspector
     --template
         --Ace                             -- web code editor
         --semantic                        -- semantic UI 前端布局
