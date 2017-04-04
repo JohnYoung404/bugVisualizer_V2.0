@@ -42,7 +42,7 @@ function initEditor(){
 
 function initFileTree(){
 	console.log('initFileTree');
-	$('#file_tree').fileTree({ root: '/home/johnyoung/Desktop', script: 'http://localhost:8080', expandSpeed: 1, collapseSpeed: 1 }, function(file) { 
+	$('#file_tree').fileTree({ root: projectPath, script: 'http://localhost:8080', expandSpeed: 1, collapseSpeed: 1 }, function(file) { 
 					loadFile(file);
 				});
 }

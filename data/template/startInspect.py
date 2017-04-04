@@ -4,6 +4,7 @@ import urllib
 import urlparse
 import cgi
 import sys
+import webbrowser
 
 reload(sys)
 
@@ -16,8 +17,6 @@ class TestHTTPHandler(BaseHTTPRequestHandler):
         parseResult = urlparse.urlparse(self.path)
         param_dict = urlparse.parse_qs(parseResult.query)
         f = parseResult.path
-        if f=='':
-            print "fatal error!"
         if not f == '/':
             fp  = open(os.curdir + f)          
             self.protocal_version = "HTTP/1.1"
@@ -72,4 +71,5 @@ port = 8080
 
 httpd = HTTPServer(('', port),  TestHTTPHandler)
 print("Serve on port: " + str(httpd.server_port))
+webbrowser.open("http://localhost:8080/index.html")
 httpd.serve_forever()
