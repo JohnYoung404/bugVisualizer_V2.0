@@ -1,32 +1,30 @@
-1.Ä¿Â¼½á¹¹
-¸ùÄ¿Â¼ÊÇÒ»¸öjava¹¤³Ì£»
-¸ùÄ¿Â¼ÏÂµÄhomeÎÄ¼ş¼ĞÊÇÒ»¸öÊ¾Àı,ÎªÁËÏÔÊ¾xmlÖĞµÄÂ·¾¶;
-dataÎÄ¼ş¼ĞÏÂµÄtemplateÎÄ¼ş¼ĞÊÇÍøÒ³µÄÄ£°åÎÄ¼ş¼Ğ,¶ÔÓÚ²»Í¬¹¤³ÌµÄÍøÒ³£¬Ö»¸Ä±äÁËtemplate/data/data.js£»
-dataÎÄ¼ş¼ĞÏÂµÄtestÎÄ¼ş¼ĞÏÂ°üº¬ÁËxmlÎÄ¼ş
+1.ç›®å½•ç»“æ„
+æ ¹ç›®å½•æ˜¯ä¸€ä¸ªjavaå·¥ç¨‹ï¼›
+æ ¹ç›®å½•ä¸‹çš„homeæ–‡ä»¶å¤¹æ˜¯ä¸€ä¸ªç¤ºä¾‹,ä¸ºäº†æ˜¾ç¤ºxmlä¸­çš„è·¯å¾„;
+dataæ–‡ä»¶å¤¹ä¸‹çš„templateæ–‡ä»¶å¤¹æ˜¯ç½‘é¡µçš„æ¨¡æ¿æ–‡ä»¶å¤¹,å¯¹äºä¸åŒå·¥ç¨‹çš„ç½‘é¡µï¼Œåªæ”¹å˜äº†template/data/data.jsï¼›
+dataæ–‡ä»¶å¤¹ä¸‹çš„testæ–‡ä»¶å¤¹ä¸‹åŒ…å«äº†xmlæ–‡ä»¶
 
-2.templateÎÄ¼ş¼Ğ½á¹¹:
-Ace 			-- web code editor
-semantic 		-- semantic UI Ç°¶Ë²¼¾Ö
-jqueryFileTree 	-- ÎÄ¼şÊ÷µÄÊµÏÖ
-js 				-- javascriptÎÄ¼ş, °üº¬Ö÷ÒªµÄ¿ØÖÆÎÄ¼şmain.js
-css				-- ²ãµşÑùÊ½±íÎÄ¼ş, main.cssÖĞÉèÖÃÁËMarkerºÍactive pathµÄÑùÊ½
-data			-- data.js´¢´æ¿É±äµÄÊı¾İ
+2.templateæ–‡ä»¶å¤¹ç»“æ„:
+Ace                             -- web code editor
+semantic                        -- semantic UI å‰ç«¯å¸ƒå±€
+jqueryFileTree                  -- æ–‡ä»¶æ ‘çš„å®ç°
+js                              -- javascriptæ–‡ä»¶, åŒ…å«ä¸»è¦çš„æ§åˆ¶æ–‡ä»¶main.js
+css                             -- å±‚å æ ·å¼è¡¨æ–‡ä»¶, main.cssä¸­è®¾ç½®äº†Markerå’Œactive pathçš„æ ·å¼
+data                            -- data.jså‚¨å­˜å¯å˜çš„æ•°æ®
+index.html                      -- å…¥å£
 
-3.main.js´úÂëµÄËµÃ÷
-initControl()			--Èë¿Úº¯Êı
-initEditor()			--³õÊ¼»¯editor£¬ÉèÖÃÒ»Ğ©ÊôĞÔ
-initFileTree()			--³õÊ¼»¯ÎÄ¼şÊ÷£¬°ó¶¨ÎÄ¼şÂ·¾¶ºÍµã»÷ÊÂ¼ş
-initFaultsSet()			--¶ÁÈëÈ±ÏİÂ·¾¶£¬²¢¸ù¾İÉ¸Ñ¡ÒªÇó½øĞĞÉ¸Ñ¡£¬Ìí¼Óµã»÷ÊÂ¼ş
-initFaultsFilter()		--¶¨ÒåÁËcheckboxµÄonchangeÊÂ¼ş
-initPath()				--½«pathµÄÄÚÈİÇå¿Õ
-loadFile()				--¸ù¾İÂ·¾¶µÃµ½´úÂë£¬ÉèÖÃ´úÂë£¬È¥³ıÒÔÇ°µÄËùÓĞmarkersºÍannotations
-loadFaultPath()			--fault±í¸ñÀïÔªËØµÄµã»÷ÊÂ¼ş¡£¼ÓÔØÒ»ÌõÈ±ÏİÂ·¾¶£¬²¢Ä¬ÈÏ´ò¿ªµÚÒ»¸ö½ÚµãµÄÎÄ¼ş
-removeOldMarkers()		--È¥³ıËùÓĞÖ®Ç°µÄmarkers
-addMarker()				--È¥µôÖ®Ç°activeÔªËØµÄÑùÊ½£¬´¥·¢µã»÷ÊÂ¼şµÄÔªËØ¼ÓÉÏactiveÑùÊ½£¬¼ÓÔØÎÄ¼ş£¬¼ÓÉÏannotationºÍmarker, scrollµ½markerµÄĞĞ
+3.main.jsä»£ç çš„è¯´æ˜
+initControl()                   --å…¥å£å‡½æ•°
+initEditor()                    --åˆå§‹åŒ–editorï¼Œè®¾ç½®ä¸€äº›å±æ€§
+initFileTree()                  --åˆå§‹åŒ–æ–‡ä»¶æ ‘ï¼Œç»‘å®šæ–‡ä»¶è·¯å¾„å’Œç‚¹å‡»äº‹ä»¶
+initFaultsSet()                 --è¯»å…¥ç¼ºé™·è·¯å¾„ï¼Œå¹¶æ ¹æ®ç­›é€‰è¦æ±‚è¿›è¡Œç­›é€‰ï¼Œæ·»åŠ ç‚¹å‡»äº‹ä»¶
+initFaultsFilter()              --å®šä¹‰äº†checkboxçš„onchangeäº‹ä»¶
+initPath()                      --å°†pathçš„å†…å®¹æ¸…ç©º
+loadFile()                      --æ ¹æ®è·¯å¾„å¾—åˆ°ä»£ç ï¼Œè®¾ç½®ä»£ç ï¼Œå»é™¤ä»¥å‰çš„æ‰€æœ‰markerså’Œannotations
+loadFaultPath()	                --faultè¡¨æ ¼é‡Œå…ƒç´ çš„ç‚¹å‡»äº‹ä»¶ã€‚åŠ è½½ä¸€æ¡ç¼ºé™·è·¯å¾„ï¼Œå¹¶é»˜è®¤æ‰“å¼€ç¬¬ä¸€ä¸ªèŠ‚ç‚¹çš„æ–‡ä»¶
+removeOldMarkers()              --å»é™¤æ‰€æœ‰ä¹‹å‰çš„markers
+addMarker()                     --å»æ‰ä¹‹å‰activeå…ƒç´ çš„æ ·å¼ï¼Œè§¦å‘ç‚¹å‡»äº‹ä»¶çš„å…ƒç´ åŠ ä¸Šactiveæ ·å¼ï¼ŒåŠ è½½æ–‡ä»¶ï¼ŒåŠ ä¸Šannotationå’Œmarker, scrollåˆ°markerçš„è¡Œ
 
-4.java²¿·Ö
-Ö÷Òª¹¦ÄÜÊÇµÃµ½report xmlµÄĞÅÏ¢£¬Ğ´µ½data.jsÖĞ
-
-5.startInspect.pyËµÃ÷
-ÊÇpython 2µÄ½Å±¾£¬Ö´ĞĞÕâ¸ö½Å±¾»á²úÉúÒ»¸ö¼òµ¥µÄHTTPserver,ÄÜÏìÓ¦file, dirÁ½¸ö´ø²ÎÊıµÄgetÇëÇó£¬²¢·µ»ØÎÄ¼şÄÚÈİ»òÕßÄ¿Â¼ĞÅÏ¢¡£
-½Å±¾»á×Ô¶¯´ò¿ªindex.html£¬²¢ÔÚhttp://localhost:8080ÓëÖ®Í¨ĞÅ
+4.javaéƒ¨åˆ†
+ä¸»è¦åŠŸèƒ½å°±æ˜¯å°†å¾—åˆ°å·¥ç¨‹æ–‡ä»¶çš„ä¿¡æ¯å’Œreport xmlçš„ä¿¡æ¯ï¼Œå†å†™åˆ°data.jsä¸­
+å› ä¸ºå†™å¾—ä»“ä¿ƒï¼Œä»£ç æœ‰ç‚¹ä¸‘é™‹
