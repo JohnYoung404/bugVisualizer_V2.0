@@ -21,8 +21,8 @@ import cn.edu.thu.tsmart.tool.bd.report.util.ResultUtil;
 
 public class Main {
 	public static String projectPath = "/home/joungyoung/Desktop";    
-	public static String reportPath = "home/zhoumin/tsmart-development/cn.edu.thu.tsmart.tool.bd.engine/cpachecker/output/result.xml";
-	public static String escape(String src) {                    //encode转移字符
+	public static String reportPath = "/home/joungyoung/Desktop/report/result.xml";
+	public static String escape(String src) {                    //encode转义字符
         int i;  
         char j;  
         StringBuffer tmp = new StringBuffer();  
