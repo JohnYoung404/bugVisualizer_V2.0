@@ -22,6 +22,8 @@ import cn.edu.thu.tsmart.tool.bd.report.util.ResultUtil;
 public class Main {
 	public static String projectPath = "/home/joungyoung/Desktop";    
 	public static String reportPath = "/home/joungyoung/Desktop/report/result.xml";
+    
+    
 	public static String escape(String src) {                    //encode转义字符
         int i;  
         char j;  
@@ -126,6 +128,18 @@ public class Main {
 		writer.write(";\nvar _FAULTS_SET = " + sb_errorlist.toString());
 		writer.write(";\nvar faultID_Path_Dic = " + sb_errorcontent.toString() + ";");
 		writer.close();
-		System.out.println("done");
+		System.out.println("Report parsed.");
+        
+        String shpath="data/template/startInspect.py";  
+	    Process process =null;
+	    String command1 = "python " + shpath;
+	    try { 
+	      Runtime.getRuntime().exec(command1 ).waitFor(); 
+	      System.out.println("Script executed.");
+	    } catch (IOException e1) { 
+	        e1.printStackTrace(); 
+	    }catch (InterruptedException e) { 
+	         e.printStackTrace(); 
+	    }
 	}
 }
