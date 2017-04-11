@@ -108,7 +108,7 @@ function loadFaultPath(){
 		$("#path_list").append("<a class='item pathNode' startline = '" + path[nodeIndex].startline + "'" + "endline = '" + path[nodeIndex].endline + "'" 
 								+ "filePath = '" + path[nodeIndex].filePath + "'" 
 								+ "><div class='ui middle aligmed content'><div class='header'>line:" + path[nodeIndex].startline
-								+ '</div><div class="description"><p>' + path[nodeIndex].supplementation + '</p></div></div></a>');
+								+ '</div></div></a>');
 	}
 	$(".pathNode").click(addMarker);
 	loadFile(path[0].filePath);
