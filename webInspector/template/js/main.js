@@ -12,6 +12,7 @@ var _FAULT_SEVERITY_ONLY_SHOW_ERROR = false;
 var _FAULT_CONFIDENCE_ONLY_SHOW_MUST = false;
 var _INIT_CODE = `No source codes to display.
 Choose a fault or select a source file to show codes.`;
+var _CURRENT_FILE;
 
 function initControl(){
 	initEditor();
@@ -41,7 +42,6 @@ function initEditor(){
 }
 
 function initFileTree(){
-	console.log('initFileTree');
 	$('#file_tree').fileTree({ root: projectPath, script: 'http://localhost:8080', expandSpeed: 1, collapseSpeed: 1 }, function(file) { 
 					loadFile(file);
 				});
@@ -88,12 +88,15 @@ function initPath(){
 }
 
 function loadFile(filepath){
-    console.log('loadFile');
+    removeOldMarkers();
+    _EDITOR.session.clearAnnotations();
+    if(filepath == _CURRENT_FILE){
+        return;
+    }
     $.get('http://localhost:8080', { file: filepath }, function(ret) {
-			_EDITOR.session.setValue(unescape(ret));
-                        removeOldMarkers();
-                        _EDITOR.session.clearAnnotations();
-					});
+			_CURRENT_FILE = filepath;
+            _EDITOR.session.setValue(unescape(ret));
+	});
 }
 
 function loadFaultPath(){
@@ -134,7 +137,6 @@ function addMarker(){
 	var start = Number($(this).attr('startline'));
 	var end = Number($(this).attr('endline'));
 	var markerProduced = _EDITOR.session.addMarker(new Range(start - 1, 0, end, 0), 'Code-Marker', 'line', false);
-	_EDITOR.session.clearAnnotations();
 	_EDITOR.session.setAnnotations([{
 		row : start - 1,
 		column: -1,
